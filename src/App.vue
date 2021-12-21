@@ -13,13 +13,13 @@
 
 <script>
 import MainNavigation from './components/MainNavigation.vue';
-import WindowsList from './components/WindowsList.vue';
+
 
 export default {
   name: 'App',
   components: {
     MainNavigation,
-    WindowsList
+   
   },
   data: function() {
     return {

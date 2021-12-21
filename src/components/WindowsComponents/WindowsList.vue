@@ -16,7 +16,7 @@
 
 <script>
 import axios from 'axios';
-import {API_HOST} from '../config';
+import {API_HOST} from '../../config';
 import WindowsListItem from './WindowsListItem';
 import WindowCreateItem from './WindowCreateItem';
 

@@ -16,7 +16,7 @@
 
 <script>
 import axios from 'axios';
-import {API_HOST} from '../config';
+import {API_HOST} from '../../config';
 import HeatersListItem from './HeatersListItem';
 import HeaterCreateItem from './HeaterCreateItem';
 

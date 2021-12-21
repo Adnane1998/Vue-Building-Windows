@@ -22,8 +22,8 @@
 
 
 <script>
-import WindowsList from './WindowsList.vue';
-import HeatersList from './HeatersList.vue';
+import WindowsList from './WindowsComponents/WindowsList.vue';
+import HeatersList from './HeatersComponents/HeatersList.vue';
 export default {
   name: 'MainNavigation',
     components: {

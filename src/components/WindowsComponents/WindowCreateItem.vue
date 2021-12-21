@@ -1,13 +1,13 @@
 <template>
 <div>
-  <b-button v-b-modal.modal-1>Add a new Heater</b-button>
+  <b-button v-b-modal.modal-1>Add a new Window</b-button>
 
-  <b-modal id="modal-1" title="Create a new heater">
+  <b-modal id="modal-1" title="Create a new Window">
    <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
    
 
-      <b-form-group id="input-group-2" label="Heater Name:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Window Name:" label-for="input-2">
         <b-form-input
           id="input-2"
           v-model="form.name"
@@ -25,11 +25,11 @@
         ></b-form-select>
       </b-form-group>
 
-         <b-form-group id="input-group-4" label="HeaterStatus:" label-for="input-4">
+         <b-form-group id="input-group-4" label="WindowStatus:" label-for="input-4">
         <b-form-select
           id="input-4"
-             v-model="form.heaterStatus"
-          :options="heaterStatus"
+             v-model="form.windowStatus"
+          :options="windowStatus"
           required
         ></b-form-select>
       </b-form-group>
@@ -47,7 +47,7 @@
 
 <script>
 import axios from 'axios';
-import {API_HOST} from '../config';
+import {API_HOST} from '../../config';
   export default {
     data() {
       return {
@@ -55,11 +55,11 @@ import {API_HOST} from '../config';
      
           name: '',
           roomId: null,
-          heaterStatus:null,
+          windowStatus:null,
           
         },
         foods: [ 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
-         heaterStatus: [ 'ON', 'OFF'],
+         windowStatus: [ 'OPEN', 'CLOSED'],
         show: true
       }
       
@@ -81,7 +81,7 @@ import {API_HOST} from '../config';
       onSubmit(event) {
         event.preventDefault()
        console.log(this.form)
-         axios.post(`${API_HOST}/api/heaters`,this.form, {
+         axios.post(`${API_HOST}/api/windows`,this.form, {
    headers: {
           // remove headers
         }
