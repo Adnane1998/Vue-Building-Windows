@@ -6,7 +6,7 @@
 
     <section class="main-content w-50 mx-auto">
       <main-navigation></main-navigation>
-      <windows-list></windows-list>
+     
     </section>
   </div>
 </template>
