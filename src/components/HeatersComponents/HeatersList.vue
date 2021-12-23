@@ -1,7 +1,16 @@
 <template>
   <div class="windows-list pt-3">
+  
+    
+       <input type="text"
+
+         placeholder="Filter by Room or Heater"
+         v-model="filter" />
+
+  
+  <hr>
     <heaters-list-item
-      v-for="heater in heaters"
+      v-for="heater in filteredRows"
       :heater="heater"
       :key="heater.id"  
       @heater-updated="updateHeater"
@@ -24,6 +33,7 @@ import HeaterCreateItem from './HeaterCreateItem';
 export default {
   components: {
    HeaterCreateItem,
+      
 
     HeatersListItem
   },
@@ -31,7 +41,8 @@ export default {
   data: function() {
     return {
       /* Initialize windows with an empty array, while waiting for actual data to be retrieved from the API */
-      heaters: []
+      heaters: [],
+       filter:''
     }
   },
   created: async function() {
@@ -39,6 +50,20 @@ export default {
     let heaters = response.data;
     this.heaters = heaters;
   },
+    computed: {
+  filteredRows() {
+    return this.heaters.filter(row => {
+       const names= row.name.toString().toLowerCase();
+         const room_names= row.roomName.toString().toLowerCase();
+      
+   
+      const searchTerm = this.filter.toLowerCase();
+
+      return room_names.includes(searchTerm) ||
+        names.includes(searchTerm);
+    });
+  }
+},
   methods: {
     updateHeater(newHeater) {
       /* Find the place of window objectw ith the same Id in the array, and replace it */

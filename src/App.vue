@@ -23,7 +23,7 @@ export default {
   },
   data: function() {
     return {
-      title: 'My App Title'
+      title: 'App for managing the building windows,heaters,rooms...'
     }
   }
 }

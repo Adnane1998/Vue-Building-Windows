@@ -1,7 +1,15 @@
 <template>
   <div class="windows-list pt-3">
+    
+       <input type="text"
+
+         placeholder="Filter by Windows or Room"
+         v-model="filter" />
+
+  
+  <hr>
     <windows-list-item
-      v-for="window in windows"
+         v-for="window in filteredRows"
       :window="window"
       :key="window.id"  
       @window-updated="updateWindow"
@@ -31,7 +39,8 @@ export default {
   data: function() {
     return {
       /* Initialize windows with an empty array, while waiting for actual data to be retrieved from the API */
-      windows: []
+      windows: [],
+       filter:''
     }
   },
   created: async function() {
@@ -39,6 +48,21 @@ export default {
     let windows = response.data;
     this.windows = windows;
   },
+    computed: {
+  filteredRows() {
+    return this.windows.filter(row => {
+       const names= row.name.toString().toLowerCase();
+         const room_names= row.roomName.toString().toLowerCase();
+      
+   
+      const searchTerm = this.filter.toLowerCase();
+
+      return room_names.includes(searchTerm) ||
+        names.includes(searchTerm);
+    });
+  }
+},
+  
   methods: {
     updateWindow(newWindow) {
       /* Find the place of window objectw ith the same Id in the array, and replace it */
