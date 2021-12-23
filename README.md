@@ -1,3 +1,6 @@
+# Contributions
+This project is an extension of the project mad by Mr Richaud Quentin,without him this project would not exist withoud him,many thanks to him.
+
 # solution
 
 ## Project setup
